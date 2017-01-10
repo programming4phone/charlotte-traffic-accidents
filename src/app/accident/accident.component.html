@@ -1,0 +1,39 @@
+<div class="cardMargin">
+  <div class="ui card">
+    <div class="content">
+      <div><strong>
+        {{ accident.address }}
+      </strong></div>
+      <div><small>
+        {{ accident.accidentDescription }}
+      </small></div>
+	  	  <!--
+	  <div >
+        {{ formatDate() | date:'shortTime' }}
+      </div>
+
+	  <div class="description">
+        Accident latitude: {{ accident.latitude }}
+      </div>
+	  <div class="description">
+        Accident longitude: {{ accident.longitude }}
+      </div>
+	  <div class="description">
+        Browser latitude:{{ whereami.latitude }}
+      </div>
+	  <div class="description">
+        Browser longitude: {{ whereami.longitude }}
+      </div>
+	  -->
+	  <div class="description">
+        {{ distanceFromBrowser() | number:'1.1-2' }} miles from here at {{ formatDate() | date:'shortTime' }}
+      </div>
+	  <div *ngIf="showMap">
+		<app-accident-mapper [lat]="accident.latitude"  [lng]="accident.longitude"></app-accident-mapper>
+	  </div>
+    </div>
+    <div class="ui bottom attached buttons">
+      <button (click)="toggleMap()" class="ui button">{{ showMapText }}</button>
+    </div>
+  </div>
+</div>

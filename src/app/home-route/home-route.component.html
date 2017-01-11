@@ -1,0 +1,6 @@
+<app-get-accidents
+	(loading)="loading = $event"
+	(results)="updateResults($event)"
+	(whereami)="updateCurrentBrowserLocation($event)">
+</app-get-accidents>
+<app-accident-list [accidents]="results" [whereami]="whereami"></app-accident-list>

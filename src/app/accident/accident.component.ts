@@ -35,7 +35,6 @@ export class AccidentComponent implements OnInit {
 	}
 
 	ngOnInit() {
-
 	}
 	
 	toggleMap(): void{
@@ -51,8 +50,13 @@ export class AccidentComponent implements OnInit {
 		return this.accidentDate;
 	}
 	
+	/*
+		The distance from the browser to the accident is calculated
+		using the Spherical Law of Cosines.
+		https://en.wikipedia.org/wiki/Spherical_law_of_cosines
+	*/
 	distanceFromBrowser() :number{
-		console.log("distanceFromBrowser() whereami:", this.whereami); // uncomment to take a look
+		//console.log("distanceFromBrowser() whereami:", this.whereami); // uncomment to take a look
 		this.browserLatitudeRadians = this.whereami.latitude * (this.piOver180); 
 		this.accidentLatitudeRadians = this.accident.latitude * (this.piOver180); 
 		this.longitudeDiffRadians = (this.accident.longitude - this.whereami.longitude) * (this.piOver180); 
@@ -66,7 +70,8 @@ export class AccidentComponent implements OnInit {
 			* this.earthRadiusMeters;
 
 		this.distanceMiles = this.distanceMeters * this.milesPerMeter;
- 		return this.distanceMiles;
+		console.log("distanceFromBrowser() distanceMiles:", this.distanceMiles); // uncomment to take a look
+		return this.distanceMiles;
 	}
 
 }

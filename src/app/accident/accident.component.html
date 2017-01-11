@@ -7,24 +7,6 @@
       <div><small>
         {{ accident.accidentDescription }}
       </small></div>
-	  	  <!--
-	  <div >
-        {{ formatDate() | date:'shortTime' }}
-      </div>
-
-	  <div class="description">
-        Accident latitude: {{ accident.latitude }}
-      </div>
-	  <div class="description">
-        Accident longitude: {{ accident.longitude }}
-      </div>
-	  <div class="description">
-        Browser latitude:{{ whereami.latitude }}
-      </div>
-	  <div class="description">
-        Browser longitude: {{ whereami.longitude }}
-      </div>
-	  -->
 	  <div class="description">
         {{ distanceFromBrowser() | number:'1.1-2' }} miles from here at {{ formatDate() | date:'shortTime' }}
       </div>

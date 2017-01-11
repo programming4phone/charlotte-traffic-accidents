@@ -1,10 +1,20 @@
 
 <div class="getAccidentsMargin">
-<h2>Charlotte Traffic Accidents</h2>
+	<h2>Charlotte Traffic Accidents</h2>
 </div>
-<app-get-accidents
-	(loading)="loading = $event"
-	(results)="updateResults($event)"
-	(whereami)="updateCurrentBrowserLocation($event)">
-</app-get-accidents>
-<app-accident-list [accidents]="results" [whereami]="whereami"></app-accident-list>
+<div>
+	<div class="ui menu">
+		<a class="item" [routerLink]="['home']">Home</a>
+		<a class="item" [routerLink]="['about']">About Us</a>
+	</div>
+	<router-outlet></router-outlet>
+</div>
+
+
+
+
+
+
+
+
+

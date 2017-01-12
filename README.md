@@ -1,6 +1,15 @@
-# CharlotteTrafficAccidents
+# Charlotte Traffic Accidents
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
+Charlotte Traffic Accidents is an Angular 2 application that provides instant access to traffic accident information...directly from the Charlotte Mecklenburg Police Department. 
+
+The app calculates the distance from your current browser location to each accident. Plan your alternate route from the  map generated for each accident!
+
+The app is currently deployed on [Heroku] (https://secure-hamlet-7600.herokuapp.com).
+
+This app was originally an [Android app] (https://play.google.com/store/apps/details?id=com.programming4phone.cmpd.accidents) and was converted to Angular 2 to allow device independence.
+
+## Development stack
+This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24. The code base also uses Semantic UI 2.2 for styling HTML markup.
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

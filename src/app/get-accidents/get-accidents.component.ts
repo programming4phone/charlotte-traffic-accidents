@@ -62,7 +62,7 @@ export class GetAccidentsComponent implements OnInit {
 	makeRequest(getButton: HTMLElement) :void {
 		getButton.className = "ui loading button";
 		
-		this.search('https://autoaccclt.appspot.com/accidents').subscribe(
+		this.search('https://floating-reef-16359.herokuapp.com/accidents').subscribe(
 				(results: Accident[]) => { // on sucesss
 					this.results.emit(results);
 				},

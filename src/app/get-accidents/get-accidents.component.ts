@@ -14,7 +14,7 @@ import { AccidentService } from '../services/accident.service';
 export class GetAccidentsComponent implements OnInit {
 	accidents: Accident[];
 	currentBrowserLocation: CurrentBrowserLocation = new CurrentBrowserLocation(35.2271, -80.8431); // default to Center City Charlotte;
-	loading: EventEmitter<boolean> = new EventEmitter<boolean>();
+	loading: boolean;
 	results: EventEmitter<Accident[]> = new EventEmitter<Accident[]>();
 	whereami: EventEmitter<CurrentBrowserLocation> = new EventEmitter<CurrentBrowserLocation>();
 
@@ -38,7 +38,7 @@ export class GetAccidentsComponent implements OnInit {
 	}
 	
 	private setCurrentLocation(): void{
-			/*
+		/*
 			The callback function for getCurrentPosition() has a delayed return.
 			The end user may have to answer "yes" to a prompt by the browser to allow location
 			data to be extracted by this app. If this code is moved to the makeRequest() method,
@@ -61,19 +61,19 @@ export class GetAccidentsComponent implements OnInit {
 	
 	}
 
-	makeRequest(getButton: HTMLElement) :void {
-		getButton.className = "ui loading button";
-		
+	makeRequest() :void {
+		this.loading = true;
 		this.accidentService.getAccidents().subscribe(
 				(results: Accident[]) => { // on sucesss
 					this.results.emit(results);
 				},
 				(err: any) => { // on error
 					console.log(err);
+					this.loading = false;
 				},
 				() => { // on completion
 					this.whereami.emit(this.currentBrowserLocation);
-					getButton.className = "ui teal button";
+					this.loading = false;
 				}
 		);
 	}

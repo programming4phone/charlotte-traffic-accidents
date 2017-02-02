@@ -1,8 +1,9 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
-import {Http, Response} from '@angular/http';
+//import {Http, Response} from '@angular/http';
 import { Observable } from 'rxjs';
 import { Accident } from '../accident/accident.model';
 import { CurrentBrowserLocation } from './get-accidents.model';
+import { AccidentService } from '../services/accident.service';
 
 @Component({
   selector: 'app-get-accidents',
@@ -17,7 +18,8 @@ export class GetAccidentsComponent implements OnInit {
 	results: EventEmitter<Accident[]> = new EventEmitter<Accident[]>();
 	whereami: EventEmitter<CurrentBrowserLocation> = new EventEmitter<CurrentBrowserLocation>();
 
-	constructor(private http: Http) { }
+	//constructor(private http: Http) { }
+	constructor(private accidentService: AccidentService) { }
 
 	ngOnInit() { 
 		this.setCurrentLocation();
@@ -62,7 +64,7 @@ export class GetAccidentsComponent implements OnInit {
 	makeRequest(getButton: HTMLElement) :void {
 		getButton.className = "ui loading button";
 		
-		this.search('https://floating-reef-16359.herokuapp.com/accidents').subscribe(
+		this.accidentService.getAccidents().subscribe(
 				(results: Accident[]) => { // on sucesss
 					this.results.emit(results);
 				},
@@ -75,46 +77,4 @@ export class GetAccidentsComponent implements OnInit {
 				}
 		);
 	}
-
-	private search(queryUrl: string): Observable<Accident[]> {
-		return this.http.get(queryUrl)
-			.map(this.extractData)
-			.catch(this.handleError);
-	}
-	
-	private extractData(res: Response) {
-		/*
-			Be careful here. The JSON returned is an array of objects
-		*/
-		return (<any>res.json())
-			.map(item => {
-				console.log("raw item", item); // uncomment if you want to debug
-				return new Accident(
-					item.accidentId,
-					item.datetimeAdd,
-					item.address,
-					item.latitude,
-					item.longitude,
-					item.accidentDescription
-				);
-			});
-	}
-	
-	
-	
-	private handleError (error: Response | any) {
-		let errMsg: string;
-		if (error instanceof Response) {
-			const body = error.json() || '';
-			const err = body.error || JSON.stringify(body);
-			errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-		} 
-		else {
-			errMsg = error.message ? error.message : error.toString();
-		}
-		console.error(errMsg);
-		return Observable.throw(errMsg);
-	}
-
-
 }

@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { DistanceService } from './services/distance.service';
+import { AccidentService } from './services/accident.service';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 
 import { AppComponent } from './app.component';
@@ -43,7 +44,8 @@ const routes: Routes = [
 	],
 	providers: [
 		{ provide: LocationStrategy, useClass: HashLocationStrategy },
-		{ provide: DistanceService, useClass: DistanceService }
+		{ provide: DistanceService, useClass: DistanceService },
+		{ provide: AccidentService, useClass: AccidentService }
 	],
   bootstrap: [AppComponent]
 })

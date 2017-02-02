@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
+import { DistanceService } from './services/distance.service';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 
 import { AppComponent } from './app.component';
@@ -23,29 +24,30 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AccidentComponent,
-    AccidentListComponent,
-    GetAccidentsComponent,
-    AccidentMapperComponent,
-    HomeRouteComponent,
-    AboutComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-	RouterModule.forRoot(routes),
-	AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDvcmGvinGgybxfb6CxlI-EfljbkiAUbew'
-    })
+	declarations: [
+		AppComponent,
+		AccidentComponent,
+		AccidentListComponent,
+		GetAccidentsComponent,
+		AccidentMapperComponent,
+		HomeRouteComponent,
+		AboutComponent
+	],
+	imports: [
+		BrowserModule,
+		FormsModule,
+		HttpModule,
+		RouterModule.forRoot(routes),
+		AgmCoreModule.forRoot({apiKey: 'AIzaSyDvcmGvinGgybxfb6CxlI-EfljbkiAUbew'})
 
-  ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+	],
+	providers: [
+		{ provide: LocationStrategy, useClass: HashLocationStrategy },
+		{ provide: DistanceService, useClass: DistanceService }
+	],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch((err: any) => console.error(err));
+	platformBrowserDynamic().bootstrapModule(AppModule)
+		.catch((err: any) => console.error(err));

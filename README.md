@@ -8,6 +8,7 @@ The app is currently deployed on [Heroku] (https://secure-hamlet-7600.herokuapp.
 
 This app was originally an [Android app] (https://play.google.com/store/apps/details?id=com.programming4phone.cmpd.accidents) and was converted to Angular 2 to allow device independence.
 
+| ![alt text](https://github.com/programming4phone/charlotte-traffic-accidents/blob/master/images/clt-acc-1.png "Sample Screenshot") | ![alt text](https://github.com/programming4phone/charlotte-traffic-accidents/blob/master/images/clt-acc-2.png "Sample Screenshot") | ![alt text](https://github.com/programming4phone/charlotte-traffic-accidents/blob/master/images/clt-acc-3.png "Sample Screenshot") |
 ## Development stack
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24. The code base also uses Semantic UI 2.2 for styling HTML markup.
 

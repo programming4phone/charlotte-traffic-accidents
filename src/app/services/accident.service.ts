@@ -22,7 +22,7 @@ export class AccidentService{
 		*/
 		return (<any>res.json())
 			.map(item => {
-				console.log("raw item", item); // uncomment if you want to debug
+				//console.log("raw item", item); // uncomment if you want to debug
 				return new Accident(
 					item.accidentId,
 					item.datetimeAdd,

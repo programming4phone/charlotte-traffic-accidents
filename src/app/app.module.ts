@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common'; 
 
 import { DistanceService } from './services/distance.service';
 import { AccidentService } from './services/accident.service';
@@ -19,9 +20,9 @@ import { HomeRouteComponent } from './home-route/home-route.component';
 import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
-{ path: '', redirectTo: 'home', pathMatch: 'full' },
-{ path: 'home', component: HomeRouteComponent },
-{ path: 'about', component: AboutComponent },
+	{ path: '', redirectTo: 'home', pathMatch: 'full' },
+	{ path: 'home', component: HomeRouteComponent },
+	{ path: 'about', component: AboutComponent },
 ];
 
 @NgModule({
@@ -39,11 +40,12 @@ const routes: Routes = [
 		FormsModule,
 		HttpModule,
 		RouterModule.forRoot(routes),
-		AgmCoreModule.forRoot({apiKey: 'AIzaSyDvcmGvinGgybxfb6CxlI-EfljbkiAUbew'})
+		AgmCoreModule.forRoot({apiKey: 'your-google-maps-api-key-here'})
 
 	],
 	providers: [
 		{ provide: LocationStrategy, useClass: HashLocationStrategy },
+		{ provide: APP_BASE_HREF, useValue: './' },
 		{ provide: DistanceService, useClass: DistanceService },
 		{ provide: AccidentService, useClass: AccidentService }
 	],
